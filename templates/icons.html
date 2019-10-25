@@ -1,0 +1,63 @@
+{%- extends "base.html" %}
+
+{% import "bootstrap/utils.html" as utils %}
+
+{% block content %}
+
+
+<div class="container-fluid" style="background-image: linear-gradient(to left, greenyellow, pink)">
+
+  <div class="jumbotron" style="background-image: linear-gradient(to left,  greenyellow, pink)">
+
+  <a href="/"><font size=4>Back to home page<font> </a>
+
+
+
+  
+  <h1>Your Snippet Results</h1>
+
+
+<h2> Most relevant topic icons related to your article</h2>
+
+<h2>
+
+ <div class="col-md-4">
+<img title="{{t1}}" src="{{url_for('static', filename=s1)}}" width='300' height='300'>
+<h3><font face=Impact>{{t1}}</font> </h3>
+ </div>
+ 
+ <div class="col-md-4">
+<img title="{{t2}}" src="{{url_for('static', filename=s2)}}"  width='300' height='300'>
+<h3><font face=Impact>{{t2}}</font> </h3>
+ </div>
+
+
+ <div class="col-md-4">
+<img title="{{t3|safe}}" src="{{url_for('static', filename=s3)}}"  width='300' height='300'>
+<h3><font face=Impact>{{t3}} </font> </h3>
+ </div>
+
+ 
+</h2>
+
+
+<div>
+
+<h2>Keywords of your snippet</h2>
+
+<h3> {{keywords|safe}} </h3>
+
+</div>
+
+
+<br>
+<h5><font face=Impact size=4> Icons in this showcase where obtained from  <a href="http://nounproject.com"> The Noun Project <img src=" {{url_for('static', filename='icons/noun_project.png')}}" width='25' height='25'>                    <a>
+                                  
+                               </font>
+                             </h5>
+
+</br>
+
+</div>
+</div>
+{%- endblock %}

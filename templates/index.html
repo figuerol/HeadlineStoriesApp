@@ -1,0 +1,127 @@
+{%- extends "base.html" %}
+
+{% import "bootstrap/utils.html" as utils %}
+
+{% block content %}
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
+  <!-- Fixed navbar -->
+
+  <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="#home"><b>Headline Stories</b></a>
+
+      </div>
+
+        <ul class="nav navbar-nav"> 
+
+          <li><a href="#home">Home</a></li>
+
+          <li><a href="#hist" >Article Topic Histogram</a></li>
+
+          <li><a href="#wordclouds">Most Used Words</a></li>
+
+     </ul>
+
+      <!--/.nav-collapse -->
+
+    </div>
+
+  </div>
+
+
+<section id="home">
+
+  <div class="container-fluid" style="background-color:Gold"  >
+    <div style="height: 560px">
+  {%- with messages = get_flashed_messages(with_categories=True) %}
+  {%- if messages %}
+    <div class="row">
+      <div class="col-md-12">
+        {{utils.flashed_messages(messages)}}
+      </div>
+    </div>
+  {%- endif %}
+  {%- endwith %}
+    <div class="jumbotron" style="background-color:Gold"  >
+ 
+      <h1> <font face=Impact> Headline Stories </font></h1>
+      <p>
+	<p >
+	  An article topic predictor</p>
+      </p>
+      <br>
+        <h3>Enter a snippet</h3>
+	
+	<form id='input' method='post' action='index'>
+	  
+	  <p>
+           <input type='text' name='snippet' />
+          </p>
+
+          <font face=Courier><b> <input type="submit" value="Submit"></b></font>
+         </form>
+   </br>
+
+
+    </div>
+     <h5><font face=Courier size=4><b> Data for this project was obtained from
+       <a href="http://nytimes.com"> The New York Times  <img  src="{{url_for('static', filename='icons/new_york_times.png')}}" width='25' height='25'> </a>
+       </b> </font> </h5>
+
+   </div>
+</div>
+</section>
+
+<section id="hist">
+ <div class="container-fluid" style="background-color:LightBlue">
+<div class="jumbotron" style="background-color: LightBlue">
+       <h1> <font size="10"  face=Impact> Number of articles by topics from training data <font></h1>
+    <img src="{{url_for('static',filename='countplot.png')}}" alt="Topics"  height="700" width="700">
+
+</div>
+</section>
+
+  <section id = "wordclouds">
+
+  <div class="container-fluid"  style="background-image: linear-gradient(to left, aqua , white)">
+  <div class="jumbotron"  style="background-image: linear-gradient(to left, aqua , white)">
+    <div>
+      <div class="row centered">
+       <h1> <font size="10" face=Impact> Most used words in The New York Times articles: <font></h1>
+
+         <div class="col-lg-6">
+       <h3>Headlines</h3>
+       <img src="{{url_for('static',filename='wordcloud_headline.png')}}" alt="Topics" >
+  </div>
+
+
+          <div class="col-lg-6">
+	        <h3>Paragraphs</h3>
+       <img src="{{url_for('static',filename='wordcloud_paragraph.png')}}" alt="Topics">
+
+  </div>
+
+  <div class="col-lg-6">
+
+	  <h3>Snippets</h3>
+       <img src="{{url_for('static',filename='wordcloud_snippet.png')}}" alt="Topics"  >
+
+
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
+</section>
+
+{%- endblock %}
