@@ -4,10 +4,32 @@ from flask import request, render_template, flash, redirect, url_for
 from flask_bootstrap import __version__ as FLASK_BOOTSTRAP_VERSION
 from flask_nav.elements import Navbar, View, Subgroup, Link, Text, Separator
 from markupsafe import escape
-from model import dbow, logreg, classDecoder, classes_dictionary
+#from model import dbow, logreg, classDecoder, classes_dictionary
 import numpy as np
 import gensim
 from gensim.summarization import keywords
+
+import os
+import pickle
+import numpy as np
+import collections
+import re
+import gensim
+
+from gensim.models.doc2vec import Doc2Vec, TaggedDocument                      
+from sklearn.linear_model import LogisticRegression                            
+   
+
+#Load DBOW model                                                                                                                             
+dbow = Doc2Vec.load("models/dbow_paragraph.model")
+filename = 'models/Logistic_topic_clasifier_from_paragraph.sav'
+#Load Logistic Regression model                                                                                                              
+logreg = pickle.load(open(filename, 'rb'))
+#Write a dictionary of classes                                                                                                               
+class_tokens=zip(range(48),logreg.classes_)
+classDecoder=dict(class_tokens)
+dictionary_filepath="classes_dictionary/section_names_dict.pkl"
+classes_dictionary = pickle.load(open(dictionary_filepath, 'rb'))
 
 
 
@@ -56,4 +78,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
