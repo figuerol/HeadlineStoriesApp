@@ -1,4 +1,6 @@
-from flask import request,Blueprint, render_template, flash, redirect, url_for
+from flask import Flask
+from flask_bootstrap import Bootstrap
+from flask import request, render_template, flash, redirect, url_for
 from flask_bootstrap import __version__ as FLASK_BOOTSTRAP_VERSION
 from flask_nav.elements import Navbar, View, Subgroup, Link, Text, Separator
 from markupsafe import escape
@@ -9,16 +11,18 @@ from gensim.summarization import keywords
 
 
 
-frontend = Blueprint('frontend', __name__)
+#frontend = Blueprint('frontend', __name__)
 
+app = Flask(__name__)
+Bootstrap(app)
 
-@frontend.route('/')
+@app.route('/')
 def main():
     
     return redirect('/index')
 
 
-@frontend.route('/index',methods=['GET','POST'])
+@app.route('/index',methods=['GET','POST'])
 def index():
     if request.method == "GET":
         return render_template('index.html')
@@ -50,3 +54,6 @@ def index():
 
 
 
+
+if __name__ == '__main__':
+    app.run(debug=True)
