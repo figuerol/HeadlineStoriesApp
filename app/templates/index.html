@@ -12,19 +12,24 @@ html {
 
   <!-- Fixed navbar -->
 
-  <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+  <div id="navigation" class="navbar navbar-default navbar-fixed-top" >
 
   <div class="container">
 
-      <div class="navbar-header">
+      <div class="navbar-header"> 
 
-        <a class="navbar-brand" href="#home"><b>Headline Stories</b></a>
+  <a class="navbar-brand" href="#home"><b>    Headline Stories  </b></a>
+  
 
       </div>
 
         <ul class="nav navbar-nav"> 
+        
+          <li>    <a href="#home"> Home </a>   </li>
 
-          <li><a href="#home">Home</a></li>
+	  <li><a href="#howitworks">How it works?</a></li>
+
+	  <li><a href="#about">About</a></li>
 
           <li><a href="#hist" >Article Topic Histogram</a></li>
 
@@ -41,20 +46,10 @@ html {
 
 <section id="home">
 
-  <div class="container-fluid" style="background-color:Gold"  >
-    <div style="height: 560px">
-  {%- with messages = get_flashed_messages(with_categories=True) %}
-  {%- if messages %}
-    <div class="row">
-      <div class="col-md-12">
-        {{utils.flashed_messages(messages)}}
-      </div>
-    </div>
-  {%- endif %}
-  {%- endwith %}
-    <div class="jumbotron" style="background-color:Gold"  >
+  <div class="container-fluid" style="background-image: linear-gradient(to top, White, LightBlue)"   >
+    <div class="jumbotron" style="background-image: linear-gradient(to bottom, LightBlue, White)" >
  
-      <h1> <font face=Impact> Headline Stories </font></h1>
+      <h1> <font color="black" face=Impact> Headline Stories </font></h1>
       <p>
 	<p >
 	  An article topic predictor</p>
@@ -73,19 +68,62 @@ html {
    </br>
 
 
-    </div>
+    
      <h5><font face=Courier size=4><b> Data for this project was obtained from
-       <a href="http://nytimes.com"> The New York Times  <img  src="{{url_for('static', filename='icons/new_york_times.png')}}" width='25' height='25'> </a>
-       </b> </font> </h5>
-
+       <a href="http://nytimes.com"> The New York Times  <img  src="{{url_for('static', filename='icons/new_york_times.png')}}" width='25' height='25'>   </a>
+       </b>  <br />  <br />   </font> </h5>
+       
+     </div>
    </div>
 </div>
 </section>
 
+
+<section id="howitworks">
+  <!-- remember to talk about business perspective mention models used, accuracy and how it was trained -->
+  
+ <div class="container-fluid" style="background-color:Black">
+<div class="jumbotron" style="background-color: Black">
+  <h1> <font size="10" color="white" >How it works? <font></h1>
+
+
+  <h3>   Copy the first few paragraphs of an article you are about to read and insert it into the snippet form. After clicking submit, your text will go through a machine learning model and the app will predict the most likely topics in which the article could be found. </h3>
+
+
+
+</div>
+</section>
+  
+
+<section id="about">
+  
+ <div class="container-fluid" style="background-color:White">
+<div class="jumbotron" style="background-color: White">
+  <h1> <font size="10" color="black" >About <font></h1>
+
+  
+  <h3> <font color="black" face="Courier"><p> This app is meant to show a small sample of what the model running behind the app can do. From a business perspective, the model can be used by companies having huge amounts of incoming paperwork yet to be classified. The app could then serve to sort documents automatically and place them in their most likely topic bins.  Moreover, whenever related documents describing different aspects of the same case share a bin, this indicates a chaining relation that can be read. For example, you may want to search for all articles on a certain case that are divided into many different documents,  each within its topic. Searching across all bins ensures that you find will all related paperwork on that case and what each article should be described in terms of the topic.</p>
+
+   <p> The model was trained on over 400,000 articles from The New York times, ranging from 2010 to 2019, with a variety of different topics and sections. There were in total 48 different sections in which an article could be classified, including U.S., New York, Opinion, Technology, Health, World, Travel, etc. The size of the training data set was over 1 Gigabyte. The frequency of topics occurring in the training set is described in the Article Topic Histogram section.</p>
+
+<p>     Let's expand a little on the architecture used to build the model. Using the NLP package Gensim, a Doc2Vec embedding was trained on the articles' first paragraphs. This algorithm associates to each paragraph a certain vector in a higher-dimensional space, learning the content and topic of each paragraph geometrically. Then these vectors with their respective topic labels were fed to a multi-class logistic regression model. The accuracy obtained was of 70% chance that the respective predicted label is within the top 3 predictions. Given the large number of topics, this is approximately 35 times better than a randomized predictor. </p>  <font> </h3>
+
+  
+
+
+
+
+</div>
+</section>
+
+
+
+
+
 <section id="hist">
- <div class="container-fluid" style="background-color:LightBlue">
-<div class="jumbotron" style="background-color: LightBlue">
-       <h1> <font size="10"  face=Impact> Number of articles by topics from training data <font></h1>
+ <div class="container-fluid" style="background-color:Black">
+<div class="jumbotron" style="background-color: Black">
+       <h1> <font size="10" color="white"  face=Impact> Number of articles by topics from training data <font></h1>
     <img src="{{url_for('static',filename='countplot.png')}}" alt="Topics"  height="700" width="700">
 
 </div>
@@ -93,11 +131,12 @@ html {
 
   <section id = "wordclouds">
 
-  <div class="container-fluid"  style="background-image: linear-gradient(to left, aqua , white)">
-  <div class="jumbotron"  style="background-image: linear-gradient(to left, aqua , white)">
+    <div class="container-fluid"  style="background-color:Purple">
+      
+  <div class="jumbotron"  style="background-color: Purple">
     <div>
       <div class="row centered">
-       <h1> <font size="10" face=Impact> Most used words in The New York Times articles: <font></h1>
+       <h1> <font size="10" color="white" face=Impact> Most used words in The New York Times articles: <font></h1>
 
          <div class="col-lg-6">
        <h3>Headlines</h3>
@@ -118,7 +157,13 @@ html {
 
 
          </div>
-       </div>
+      <div> <p><font color="white" face="Courier">
+<br />
+	 
+	 These WordClouds illustrate the frequency of words found in different parts of articles from the training set. In favor of identifying a non-trivial pattern, certain words that would obviously be more frequent in the New York Times were removed from these counts, namely words such as New York, government, and president.
+
+      <font></p> </div>
+      </div>
      </div>
    </div>
   </div>
