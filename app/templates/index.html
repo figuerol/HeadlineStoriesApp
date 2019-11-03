@@ -121,7 +121,7 @@ html {
 
 
 <section id="hist">
- <div class="container-fluid" style="background-color:Black">
+ <div class="container-fluid" style="background-color:Black"  >
 <div class="jumbotron" style="background-color: Black">
        <h1> <font size="10" color="white"  face=Impact> Number of articles by topics from training data <font></h1>
     <img src="{{url_for('static',filename='countplot.png')}}" alt="Topics"  height="700" width="700">
@@ -131,12 +131,12 @@ html {
 
   <section id = "wordclouds">
 
-    <div class="container-fluid"  style="background-color:Purple">
+    <div class="container-fluid" style="background-image: linear-gradient(to bottom, White, LightBlue)">
       
-  <div class="jumbotron"  style="background-color: Purple">
+  <div class="jumbotron" style="background-image: linear-gradient(to bottom, White, LightBlue)"  >
     <div>
       <div class="row centered">
-       <h1> <font size="10" color="white" face=Impact> Most used words in The New York Times articles: <font></h1>
+       <h1> <font size="10" color="black" face=Impact> Most used words in The New York Times articles: <font></h1>
 
          <div class="col-lg-6">
        <h3>Headlines</h3>
@@ -157,7 +157,7 @@ html {
 
 
          </div>
-      <div> <p><font color="white" face="Courier">
+      <div> <p><font face="Courier">
 <br />
 	 
 	 These WordClouds illustrate the frequency of words found in different parts of articles from the training set. In favor of identifying a non-trivial pattern, certain words that would obviously be more frequent in the New York Times were removed from these counts, namely words such as New York, government, and president.
