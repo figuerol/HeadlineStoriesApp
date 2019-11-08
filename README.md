@@ -8,7 +8,7 @@ The model was trained on the lead paragraphs of 400,000 articles obtained from t
 The app delivers the prediction results in terms of Icons, which were obtained from The Noun Project. Every Icon used is credited to the author in the image, as per the license agreement in The Noun Project.
 Thier work is truly inspirational and the platform is a great way for designers across the world to showcase their work.
 
-This app was built using a flask framework. The main file building it can be found in app/frontend.py .
+This app was built using a flask framework. The main file building it can be found in app/frontend.py . The classes_dictionary folder just contains a dictionary which translates names of sections to their corresponding icon file name.
 
 
 
